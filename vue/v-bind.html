@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <!-- 
+            v-bind：  可以简写成    ：
+        -->
+        <div class="div1">
+                <h1 v-bind:id="msg">
+                        {{msg}}
+                </h1>
+                <p :class="{aa:isA,bb:isB}" @click='click()'>gsdga</p>
+
+        </div>
+        
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:".div1",
+                data:{
+                    msg:'haha',
+                    isA:true,
+                    isB:false
+                },
+                methods:{
+                    click(){
+                        this.isA=!this.isA;
+                        this.isB=!this.isB;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

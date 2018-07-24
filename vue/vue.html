@@ -7,11 +7,19 @@
         <title>Document</title>
     </head>
     <body>
+        <!-- 
+            v-on:可以简写成@
+        -->
+
+
         <div class="div1">
             <ul>
                 <li v-for="val in arr">{{val}}</li>
             </ul>
             <h2 v-for="(val,key) in obj">{{key}}:'{{val}}'</h2>
+            <button v-on:click='consol()'>click</button>
+            <div>{{num}}</div>
+            <div>{{obj.name}}</div>
         </div>
     </body>
     <script src="vue.js"></script>
@@ -23,6 +31,14 @@
                 obj:{
                     name:'zs',
                     age:20
+                },
+                num:0
+            },
+            methods:{
+                consol(){
+                    console.log(this);
+                    this.num++;
+                    this.obj.name='lisi';
                 }
             }
         })
