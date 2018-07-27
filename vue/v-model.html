@@ -7,18 +7,46 @@
     <title>Document</title>
 </head>
 <body>
+
+
+    
     <div class="div1">
         <input type="text" v-model="msg">
         {{msg}}
+
+        <input type="radio" value="11" v-model="sex">nan
+        <input type="radio" value="22" v-model="sex">nv
+
+        <br>
+        <input type="checkbox" value="zuqiu" v-model="sports">zuqiu
+        <input type="checkbox" value="lanqiu" v-model="sports">lanqiu
+        <input type="checkbox" value="pingpangqiu" v-model="sports">pingpangqiu
+        <br>
+        <select v-model="school">
+            <option value="heida">heida</option>
+            <option value="ligong">ligong</option>
+            <option value="weichuang">weichuang</option>
+        </select>
+
     </div>
     
 
     <script src="vue.js"></script>
     <script>
+            // v-model几种情况：
+            // radio;
+            // checkbox;
+            // select;
+
+
+
         var vm =new Vue({
             el:'.div1',
             data:{
-                msg:'kk'
+                msg:'kk',
+                sex:'',
+                sports:[],
+                school:'weichuang'
             }
         })
     </script>

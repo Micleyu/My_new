@@ -48,11 +48,11 @@
                     <button class="add" @click="add()">添加</button>
                 </div>
                 <div>
-                    <input type="text" placeholder="请输入搜索内容">
-                    <button>搜索</button>
+                    <input type="text" placeholder="请输入搜索内容" v-model="searchVal">
+                    <button @click="search()">搜索</button>
                 </div>
                 <ul>
-                    <li v-for="product in proList" :class="{selected:product.isSelect}" @click="change(product)">
+                    <li v-for="(product,index) in proList" :class="{selected:product.isSelect}" @click="change(product,index)">
                         <input type="checkbox" :checked="product.isSelect">
                         <span>{{product.name}}</span>
                         <span class="close">[X]</span>
@@ -61,9 +61,9 @@
                 </ul>
         
                 <div>
-                    <button class="del">删除选中</button>
+                    <button class="del" @click="del()">删除选中</button>
                     总价
-                    <span class="total_price">0</span>
+                    <span class="total_price">{{sum()}}</span>
                 </div>
             </div>    
 
@@ -95,12 +95,15 @@
                         }
                         ],
                         name:'',
-                        price:''
+                        price:'',
+                        searchVal:''
+                        
                     },
                     methods:{
                         change(pro){
-                            pro.isSelect=!pro.isSelect;
                             
+                            pro.isSelect=!pro.isSelect;
+                           
                         },
                         add(){
                             this.proList.push({
@@ -110,6 +113,35 @@
                             }),
                             this.name='',
                             this.price=''
+                        },
+                        sum(){
+                            let totalPrice=0;
+                            this.proList.forEach(function(pro){
+                                if(pro.isSelect){
+                                    totalPrice+=pro.price*1;
+                                }
+                            })
+                            return totalPrice;
+                        },
+                        del(){
+                            let newProlist=this.proList.filter(function(pro,idx){
+                                return pro.isSelect==false;
+                            })
+                            this.proList=newProlist;
+                        },
+                        search(){
+                            const a=this.proList
+                            if(this.searchVal!=''){
+                                let newPro= this.proList.filter((pro)=>{
+                                return pro.name.includes(this.searchVal);
+                            })
+                            this.proList=newPro;
+                            console.log(newPro)
+                            }else{
+                                this.proList=a;
+                                console.log(a)
+                            }
+                            
                         }
                     }
 
