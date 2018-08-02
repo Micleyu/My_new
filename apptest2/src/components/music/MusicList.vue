@@ -1,6 +1,6 @@
 <template>
     <div class="musiccontent">
-        <div v-for="(obj,index) in musicList" :key="index" class="music-list">
+        <div v-for="(obj,index) in musicList" :key="index" class="music-list" @click="goMusic(obj.id)">
             <img :src="obj.bg" alt="">
         </div>
     </div>
@@ -19,6 +19,11 @@
             }).catch(res=>{
                 
             })
+        },
+        methods: {
+            goMusic(id){
+                this.$router.push(`/music/musicDetail/${id}`)
+            }
         }
     }
 </script>

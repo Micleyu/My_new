@@ -22,7 +22,7 @@
         },
         created () {
             axios.get(`./static/data/moviedetail.json`).then(res=>{
-                console.log(res)
+                
                 this.movieDetail=res.data.data.MovieDetailModel;
             }).catch()
         }

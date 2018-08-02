@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import MovieList from '@/components/movie/Movie'
 import MusicList from '@/components/music/MusicList'
 import MovieDetail from '@/components/movie/MovieDetail'
-
+import MusicDetail from '@/components/music/MusicDetail'
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +23,10 @@ export default new Router({
     {
       path: '/music/musiclist',
       component:MusicList
+    },
+    {
+      path: '/music/musicDetail/:musicId',
+      component:MusicDetail
     }
   ]
 })
